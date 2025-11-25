@@ -1,0 +1,280 @@
+/* Fuentes */
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:wght@400;700&display=swap");
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilos para la sección login-hero-area (similar al home) */
+.login-hero-area { /* Renombrado de hero-area */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh; /* Ajusta la altura para que ocupe toda la ventana */
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.login-hero-area .block { /* Renombrado de hero-area */
+    z-index: 2;
+    color: white;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.login-hero-area .block h1 { /* Renombrado de hero-area */
+    font-family: "Libre Baskerville", serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.login-hero-area .block p { /* Renombrado de hero-area */
+    font-family: "Bitter", serif;
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+.login-hero-area .btn-transparent { 
+    border: 1px solid white;
+    color: white;
+    padding: 12px 30px;
+    margin: 10px;
+    background: transparent;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Bitter", serif;
+    text-decoration: none; /* Asegúrate de que los enlaces no estén subrayados */
+    display: inline-block; /* Para que el padding y margin funcionen correctamente */
+}
+
+.login-hero-area .btn-transparent:hover { /* Renombrado de hero-area */
+    background: white;
+    color: black;
+}
+
+/* Overlay oscuro para mejorar legibilidad */
+.login-hero-area.overlay::before { /* Renombrado de hero-area */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Responsive para login-hero-area */
+@media (max-width: 768px) {
+    .login-hero-area .block h1 { /* Renombrado de hero-area */
+        font-size: 2.5rem;
+    }
+
+    .login-hero-area .block p { /* Renombrado de hero-area */
+        font-size: 1rem;
+    }
+}
+
+
+/* Estilos para la sección de login */
+/*---------------login-------------------- */
+#login-form {
+    background-color: #353b43;
+    padding: 50px 0;
+}
+
+#login-form .block {
+    background-color: #242930;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#login-form h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Libre Baskerville", serif; /* Aplicar fuente del home */
+    font-weight: 700; /* Negrita para el título */
+}
+
+#login-form h2 .color {
+    color: #57cbcc; /* Color para la palabra "Sesion" */
+}
+
+#login-form .border {
+    width: 50px;
+    height: 3px;
+    background-color: #57cbcc;
+    margin: 0 auto 30px; /* Centrar y dar espacio */
+}
+
+#login-form form {
+    margin-top: 20px;
+}
+
+#login-form .form-group {
+    margin-bottom: 20px;
+}
+
+#login-form .form-buttons {
+    text-align: center;
+    margin-top: 30px; /* Espacio superior para los botones */
+}
+
+#login-form label {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block; /* Asegura que la etiqueta ocupe su propia línea */
+    font-family: "Bitter", serif; /* Aplicar fuente del home */
+}
+
+#login-form input[type="email"],
+#login-form input[type="password"] {
+    background-color: #2f383d;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    font-family: "Bitter", serif; /* Aplicar fuente del home */
+}
+
+#login-form input[type="email"]:focus,
+#login-form input[type="password"]:focus {
+    border: 1px solid #57cbcc;
+    box-shadow: 0 0 10px rgba(87, 203, 204, 0.5);
+    outline: none; /* Quitar el contorno por defecto del navegador */
+}
+
+#login-form button[type="submit"] {
+    background-color: #57cbcc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Bitter", serif; /* Aplicar fuente del home */
+    text-transform: uppercase; /* Mayúsculas como en el home */
+    letter-spacing: 1px; /* Espaciado de letras */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+#login-form button[type="submit"]:hover {
+    background-color: #2c9091;
+}
+
+.register-link {
+    display: block;
+    margin-top: 15px; /* Aumentar el margen superior */
+    text-align: center;
+    color: #57cbcc;
+    text-decoration: none;
+    font-family: "Bitter", serif; /* Aplicar fuente del home */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+.register-link:hover {
+    color: #2c9091;
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+/* Estilos para mensajes de error */
+p[style="color: red"] {
+    font-family: "Bitter", serif;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* Contenedor para centrar el formulario en la página */
+.container {
+    max-width: 960px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar horizontalmente */
+    padding: 0 15px; /* Padding a los lados */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px; /* Compensar el padding del col */
+    margin-right: -15px; /* Compensar el padding del col */
+}
+
+.col-lg-6 {
+    flex: 0 0 50%; /* Ocupa el 50% del ancho */
+    max-width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.offset-lg-3 {
+    margin-left: 25%; /* Desplazar 3 columnas (50% / 2) */
+}
+
+/* Responsive para el layout de columnas */
+@media (max-width: 991.98px) {
+    .col-lg-6, .offset-lg-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Nuevos estilos para el botón de mostrar/ocultar clave */
+/* Estilos existentes que se mantienen */
+/* ... (todos tus estilos anteriores) ... */
+
+/* Nuevos estilos específicos para el campo de contraseña */
+.password-field-container {
+    margin-bottom: 10px;
+}
+
+.show-password-btn {
+    width: 30%;
+    background-color: transparent;
+    border: 1px solid #57cbcc;
+    color: #57cbcc;
+    padding: 8px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Bitter", serif;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.show-password-btn:hover {
+    background-color: #57cbcc;
+    color: #fff;
+}
+
+/* Asegurarse que el input mantiene sus estilos */
+input[type="password"],
+input[type="text"] {
+    background-color: #2f383d;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    font-family: "Bitter", serif;
+    transition: all 0.3s ease;
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border: 1px solid #57cbcc !important;
+    box-shadow: 0 0 10px rgba(87, 203, 204, 0.5) !important;
+    outline: none !important;
+}
+

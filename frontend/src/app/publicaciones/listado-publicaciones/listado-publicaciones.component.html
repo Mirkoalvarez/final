@@ -1,0 +1,71 @@
+<section class="listado-publicaciones-section">
+  <div class="container">
+    <div class="block">
+      <!-- section title -->
+      <div class="title text-center">
+        <h2>Listado de <span class="color">Publicaciones</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+
+      <div class="text-center">
+        <a routerLink="/publicaciones/nueva" class="btn-create-publication">Crear Nueva Publicación</a>
+      </div>
+
+      <div class="filters-container">
+        <div>
+          <label for="filtroCategoria">Categoría:</label>
+          <select id="filtroCategoria" [(ngModel)]="filtroCategoria" (change)="cargarPublicaciones()">
+            <option value="">Todas</option>
+            <option value="1">Pintura</option>
+            <option value="2">Escultura</option>
+            <option value="3">Muebles Antiguos</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="filtroEstilo">Estilo:</label>
+          <select id="filtroEstilo" [(ngModel)]="filtroEstilo" (change)="cargarPublicaciones()">
+            <option value="">Todos</option>
+            <option value="1">Barroco</option>
+            <option value="2">Renacimiento</option>
+            <option value="3">Art Nouveau</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="busquedaAutor">Buscar Autor:</label>
+          <input type="text" 
+            id="busquedaAutor"
+            [(ngModel)]="busquedaAutor"
+            (input)="cargarPublicaciones()"
+            placeholder="Nombre del autor"
+            minlength="2"
+            maxlength="50">
+        </div>
+      </div>
+
+      <p *ngIf="publicaciones.length === 0" class="no-publications-message">No hay publicaciones para mostrar.</p>
+
+      <div *ngFor="let publicacion of publicaciones" class="publicacion-card">
+        <h3>{{ publicacion.titulo }}</h3>
+        <p><strong>Autor:</strong> {{ publicacion.autor }}</p>
+        <p><strong>Descripción:</strong> {{ publicacion.descripcion }}</p>
+        <p><strong>Fecha de Publicación:</strong> {{ publicacion.fecha_publicacion }}</p>
+        <p *ngIf="publicacion.categoria"><strong>Categoría:</strong> {{ publicacion.categoria }}</p>
+        <p *ngIf="publicacion.estilo"><strong>Estilo:</strong> {{ publicacion.estilo }}</p>
+        <p><strong>Comentarios:</strong> {{ publicacion.cantidad_comentarios }}</p>
+        
+        <div *ngIf="publicacion.imagen" class="image-container">
+          <img [src]="'http://localhost/final/public/uploads/thumb_' + publicacion.imagen"
+              alt="Miniatura de la publicación" width="150" height="150">
+        </div>
+        <div *ngIf="publicacion.archivo">
+          <a [href]="'http://localhost/final/public/uploads/' + publicacion.archivo" download class="download-link">Descargar archivo</a>
+        </div>
+
+        <a [routerLink]="['/publicaciones', publicacion.id]" class="detail-link">Ver Detalle</a>
+      </div>
+    </div>
+  </div>
+</section>

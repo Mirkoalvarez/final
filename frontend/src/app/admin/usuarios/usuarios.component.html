@@ -1,0 +1,84 @@
+<section class="gestion-usuarios-section">
+  <div class="container">
+    <div class="block">
+      <!-- section title -->
+      <div class="title text-center">
+        <h2>Gestión de <span class="color">Usuarios</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+
+      <p class="admin-info">Solo accesible para usuarios con rol Admin.</p>
+
+      <p *ngIf="mensaje" class="message success">{{ mensaje }}</p>
+      <p *ngIf="error" class="message error">{{ error }}</p>
+
+      <h3>Listado de Usuarios</h3>
+      <div class="table-container">
+        <table class="usuarios-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="usuarios.length === 0">
+              <td colspan="5" class="no-data-message">No hay usuarios registrados.</td>
+            </tr>
+            <tr *ngFor="let usuario of usuarios">
+              <td>{{ usuario.id }}</td>
+              <td>{{ usuario.nombre }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.rol }}</td>
+              <td class="actions-cell">
+                <button (click)="seleccionarUsuarioParaEditar(usuario)" class="btn-primary">Editar</button>
+                <button (click)="eliminarUsuario(usuario.id)" class="btn-secondary">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="usuarioSeleccionado" class="edit-form-container">
+        <h3>Editar Usuario: {{ usuarioSeleccionado.nombre }} (ID: {{ usuarioSeleccionado.id }})</h3>
+        <form (ngSubmit)="guardarCambiosUsuario()">
+          <div class="form-group">
+            <label for="editNombre">Nombre:</label>
+            <input type="text" id="editNombre" [(ngModel)]="usuarioSeleccionado.nombre" name="editNombre" required class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="editEmail">Email:</label>
+            <input type="email" id="editEmail" [(ngModel)]="usuarioSeleccionado.email" name="editEmail" required class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="editRol">Rol:</label>
+            <select id="editRol" [(ngModel)]="usuarioSeleccionado.rol" name="editRol" required class="form-select">
+              <option value="admin">admin</option>
+              <option value="usuario">usuario</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editClave">Nueva Clave (opcional):</label>
+            <input type="password" id="editClave" [(ngModel)]="usuarioSeleccionado.nuevaClave" name="editClave" class="form-input">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+            <button type="button" (click)="usuarioSeleccionado = null" class="btn-cancel">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="logout-container">
+    <button (click)="cerrarSesion()" class="btn-logout">Cerrar sesión</button>
+  </div>
+</section>
+

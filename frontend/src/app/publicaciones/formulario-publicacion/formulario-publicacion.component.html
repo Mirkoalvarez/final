@@ -1,0 +1,97 @@
+<section class="formulario-publicacion-section">
+  <div class="container">
+    <div class="block">
+      <!-- section title -->
+      <div class="title text-center">
+        <h2>{{ valoresIniciales?.id ? 'Editar' : 'Crear' }} <span class="color">Publicación</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+
+      <button *ngIf="valoresIniciales?.id"
+              class="btn-volver"
+              [routerLink]="['/publicaciones', valoresIniciales.id]">
+        ← Volver a la Publicación
+      </button>
+      <button *ngIf="!valoresIniciales?.id"
+              class="btn-volver"
+              routerLink="/publicaciones">
+        ← Volver al Listado
+      </button>
+
+      <form [formGroup]="form" (ngSubmit)="submitForm()" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="titulo" class="form-label">Título:</label>
+          <input id="titulo" type="text" formControlName="titulo" class="form-input" placeholder="Introduce el título de la publicación" />
+          <div *ngIf="form.get('titulo')?.invalid && (form.get('titulo')?.touched || formularioEnviado)" class="form-error">
+            <span *ngIf="form.get('titulo')?.errors?.['required']">El título es requerido.</span>
+            <span *ngIf="form.get('titulo')?.errors?.['minlength']">El título debe tener al menos 5 caracteres.</span>
+            <span *ngIf="form.get('titulo')?.errors?.['maxlength']">El título no puede exceder los 100 caracteres.</span>
+            <span *ngIf="form.get('titulo')?.errors?.['pattern']">El título contiene caracteres no permitidos.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion" class="form-label">Descripción:</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-textarea" placeholder="Escribe una descripción detallada de la publicación"></textarea>
+          <div *ngIf="form.get('descripcion')?.invalid && (form.get('descripcion')?.touched || formularioEnviado)" class="form-error">
+            <span *ngIf="form.get('descripcion')?.errors?.['required']">La descripción es requerida.</span>
+            <span *ngIf="form.get('descripcion')?.errors?.['minlength']">La descripción debe tener al menos 10 caracteres.</span>
+            <span *ngIf="form.get('descripcion')?.errors?.['maxlength']">La descripción no puede exceder los 2000 caracteres.</span>
+            <span *ngIf="form.get('descripcion')?.errors?.['pattern']">La descripción contiene caracteres no permitidos.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="imagen" class="form-label">Imagen:</label>
+          <input id="imagen" type="file" (change)="onFileChange($event, 'imagen')" class="form-input" />
+          <p *ngIf="valoresIniciales?.imagen" class="current-file-info">
+            Archivo actual: {{ valoresIniciales.imagen }}
+            <input type="checkbox" id="imagen_borrar" [(ngModel)]="borrarImagenActual" [ngModelOptions]="{standalone: true}">
+            <label for="imagen_borrar">Borrar imagen actual</label>
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="archivo" class="form-label">Archivo:</label>
+          <input id="archivo" type="file" (change)="onFileChange($event, 'archivo')" class="form-input" />
+          <p *ngIf="valoresIniciales?.archivo" class="current-file-info">
+            Archivo actual: {{ valoresIniciales.archivo }}
+            <input type="checkbox" id="archivo_borrar" [(ngModel)]="borrarArchivoActual" [ngModelOptions]="{standalone: true}">
+            <label for="archivo_borrar">Borrar archivo actual</label>
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="categoria" class="form-label">Categoría:</label>
+          <select id="categoria" formControlName="id_categoria" class="form-select">
+            <option value="">Seleccionar</option>
+            <option value="1">Pintura</option>
+            <option value="2">Escultura</option>
+            <option value="3">Muebles Antiguos</option>
+          </select>
+          <div *ngIf="form.get('id_categoria')?.invalid && (form.get('id_categoria')?.touched || formularioEnviado)" class="form-error">
+            La categoría es requerida.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="estilo" class="form-label">Estilo:</label>
+          <select id="estilo" formControlName="id_estilo" class="form-select">
+            <option value="">Seleccionar</option>
+            <option value="1">Barroco</option>
+            <option value="2">Renacimiento</option>
+            <option value="3">Art Nouveau</option>
+          </select>
+          <div *ngIf="form.get('id_estilo')?.invalid && (form.get('id_estilo')?.touched || formularioEnviado)" class="form-error">
+            El estilo es requerido.
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

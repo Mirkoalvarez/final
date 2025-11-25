@@ -1,0 +1,734 @@
+{
+	"info": {
+		"_postman_id": "d06dbe7c-b86d-450c-88c3-ae3926ae07ab",
+		"name": "final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38289831"
+	},
+	"item": [
+		{
+			"name": "comentarios",
+			"item": [
+				{
+					"name": "crear_comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc1NDI2Mzc2Mn0.r_CRwqhPJhD6Rm2K_QAayZG5_zBRx8w5dG2QUIVlwBw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id_publicacion\": 30,  // Reemplaza con el ID de la publicación a la que deseas comentar\r\n\"contenido\": \"Este es un comentario de prueba.\"  // El texto del comentario\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/final/public/comentarios/crear_comentario.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"comentarios",
+								"crear_comentario.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar_comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc1NDI2Mzc2Mn0.r_CRwqhPJhD6Rm2K_QAayZG5_zBRx8w5dG2QUIVlwBw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 30,\r\n  \"texto\": \"Comentario actualizado correctamente.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/final/public/comentarios/actualizar_comentario.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"comentarios",
+								"actualizar_comentario.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar_comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUzMDQwOTQ5fQ.d7PQ_FNixvrmmRqyFwPgO7DejVK80X_eQjdKJO9ywrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/final/public/comentarios/eliminar_comentario.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"comentarios",
+								"eliminar_comentario.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar_por_publicacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUzMDQwOTQ5fQ.d7PQ_FNixvrmmRqyFwPgO7DejVK80X_eQjdKJO9ywrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/final/public/comentarios/listar_por_publicacion.php?id=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"comentarios",
+								"listar_por_publicacion.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "publicaciones",
+			"item": [
+				{
+					"name": "crear_publicacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc1NDI2Mzc2Mn0.r_CRwqhPJhD6Rm2K_QAayZG5_zBRx8w5dG2QUIVlwBw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titulo",
+									"value": "Título de prueba hecho por postman.",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "descripcion de prueba hecho por postman.",
+									"type": "text"
+								},
+								{
+									"key": "id_categoria",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id_estilo",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/final/public/publicaciones/crear_publicacion.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"publicaciones",
+								"crear_publicacion.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar_publicaciones",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/final/public/publicaciones/listar_publicaciones.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"publicaciones",
+								"listar_publicaciones.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subir_imagen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUzMDQwOTQ5fQ.d7PQ_FNixvrmmRqyFwPgO7DejVK80X_eQjdKJO9ywrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imagen",
+									"description": "imagen",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/final/public/uploads/SharaBullet.jpg"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/final/public/uploads/Ingeniería de Software I - Cronograma 2025.pdf.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/final/public/publicaciones/subir_imagen.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"publicaciones",
+								"subir_imagen.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar_publicacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc1NDI2Mzc2Mn0.r_CRwqhPJhD6Rm2K_QAayZG5_zBRx8w5dG2QUIVlwBw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "titulo",
+									"value": "titulo cambiado por postman",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "descripcion cambiada por postman",
+									"type": "text"
+								},
+								{
+									"key": "id_categoria",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id_estilo",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "imagen_borrar",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "archivo_borrar",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/final/public/publicaciones/actualizar_publicacion.php?id=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"publicaciones",
+								"actualizar_publicacion.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar_publicacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUzMDQwOTQ5fQ.d7PQ_FNixvrmmRqyFwPgO7DejVK80X_eQjdKJO9ywrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/final/public/publicaciones/eliminar_publicacion.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"publicaciones",
+								"eliminar_publicacion.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "perfil",
+			"item": [
+				{
+					"name": "obtener_perfil",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc1NDMzNTQyMX0.gY38S2je75QxyF0BQNTosFbG8IUVgqSLattw9fNvOIY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/final/public/perfil/obtener_perfil.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"perfil",
+								"obtener_perfil.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar_perfil",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc1NDMzNTQyMX0.gY38S2je75QxyF0BQNTosFbG8IUVgqSLattw9fNvOIY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Mirko Alvarez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/final/public/perfil/actualizar_perfil.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"final",
+								"public",
+								"perfil",
+								"actualizar_perfil.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "init",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/final/adicional/db/init.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"adicional",
+						"db",
+						"init.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear_usuario/registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Juan Pérez\",\r\n  \"email\": \"juan@example.com\",\r\n  \"clave\": \"Secreta123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/final/public/api/crear_usuario.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"public",
+						"api",
+						"crear_usuario.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "autenticar/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"clave\": \"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/final/public/api/autenticar.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"public",
+						"api",
+						"autenticar.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar_usuarios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUyOTcyODI5fQ.FwcIS-CKYqAfRQ8u7xtdZA4Ppw_1LjfxK9wO_39bVwQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/final/public/api/listar_usuarios.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"public",
+						"api",
+						"listar_usuarios.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar_usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUyOTc1NzkwfQ.xHgjbAzsnt-xpPbUmUVO09w7Im0IInrGPe9UIUMmgOc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2,\r\n  \"nombre\": \"Nuevo Nombre\",\r\n  \"email\": \"nuevo@email.com\",\r\n  \"rol\": \"usuario\",\r\n  \"clave\": \"nuevo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/final/public/api/actualizar_usuario.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"public",
+						"api",
+						"actualizar_usuario.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reiniciar_db",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"juan@example.com\",\r\n  \"clave\": \"secreta123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost/final/public/api/reiniciar_db.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"public",
+						"api",
+						"reiniciar_db.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar_usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbCI6ImFkbWluIiwiZXhwIjoxNzUyOTc1NzkwfQ.xHgjbAzsnt-xpPbUmUVO09w7Im0IInrGPe9UIUMmgOc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/final/public/api/borrar_usuario.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"final",
+						"public",
+						"api",
+						"borrar_usuario.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

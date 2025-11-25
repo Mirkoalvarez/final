@@ -1,0 +1,44 @@
+<section class="login-hero-area overlay" style="background-image: url('http://localhost/final/frontend/src/assets/galeriaPinturas.jpg');">
+    <div class="block">
+        <h1>Oblivion</h1>
+        <p>Ingresa tus credenciales para acceder a tu cuenta</p>
+        <button (click)="scrollToLoginForm()" class="btn btn-transparent smooth-scroll">Iniciar sesión</button>
+    </div>
+</section>
+
+<section id="login-form" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="block">
+          <!-- section title -->
+          <div class="title text-center">
+              <h2>Iniciar <span class="color">Sesion</span></h2>
+              <div class="border"></div>
+          </div>
+          <!-- /section title -->
+          <form (ngSubmit)="iniciarSesion()">
+              <div class="form-group">
+                  <label for="email">Email:</label><br />
+                  <input type="email" [(ngModel)]="email" name="email" required class="form-control" id="email" placeholder="Ingrese su email" /><br /><br />
+              </div>
+              <div class="form-group password-input-container">
+                  <label for="clave">Clave:</label><br />
+                  <div class="password-field-container">
+                    <input [type]="tipoInputClave()" [(ngModel)]="clave" name="clave" required autocomplete="current-password" class="form-control" id="clave" placeholder="Ingrese su contraseña" />
+                  </div>
+                  <button type="button" (click)="mostrarClave = !mostrarClave" class="show-password-btn">
+                    {{ mostrarClave ? 'Ocultar contraseña' : 'Mostrar contraseña' }}
+              </button>
+              </div>
+              <div class="form-buttons">
+                  <button type="submit" class="btn btn-main">Ingresar</button>
+                  <a routerLink="/registro" class="register-link">¿No tenés cuenta? Registrate acá</a>
+              </div>
+          </form>
+          <p *ngIf="error" style="color: red; text-align: center; margin-top: 10px;">{{ error }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

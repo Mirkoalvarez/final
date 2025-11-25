@@ -1,0 +1,9 @@
+<section class="welcome-section overlay" 
+    style="background-image: url('http://localhost/final/frontend/src/assets/escultura01.jpg');">
+    <div class="block">
+        <h1>Bienvenido al home</h1>
+        <p>Estás logueado.</p>
+        <button (click)="cerrarSesion()" class="btn btn-transparent">Cerrar sesión</button>
+        <button [routerLink]="['/publicaciones']" class="btn btn-transparent">Ver Publicaciones</button>
+    </div>
+</section>

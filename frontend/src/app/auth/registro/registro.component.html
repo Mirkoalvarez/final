@@ -1,0 +1,98 @@
+<section class="registro-hero-area overlay" style="background-image: url('http://localhost/final/frontend/src/assets/galeriabg.jpg');">
+    <div class="block">
+        <h1>Oblivion</h1>
+        <p>Crea tu cuenta para acceder a nuestra plataforma</p>
+        <button (click)="scrollToRegistroForm()" class="btn btn-transparent smooth-scroll">Registrarse</button>
+    </div>
+</section>
+
+<section id="registro-form" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="block">
+          <!-- section title -->
+          <div class="title text-center">
+              <h2>Crear <span class="color">Cuenta</span></h2>
+              <div class="border"></div>
+          </div>
+          <!-- /section title -->
+          <form (ngSubmit)="registrarse()">
+              <div class="form-group">
+                  <label for="nombre">Nombre:</label><br />
+                  <input type="text" [(ngModel)]="nombre" name="nombre" required class="form-control" id="nombre" placeholder="Ingrese su nombre" /><br />
+                  <p *ngIf="nombre && !nombreValido()" style="color:red;">
+                    Nombre inválido. Solo letras y espacios permitidos.
+                  </p>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email:</label><br />
+                  <input type="email" [(ngModel)]="email" name="email" required class="form-control" id="email" placeholder="Ingrese su email" /><br />
+                  <p *ngIf="email && !emailValido()" style="color:red;">
+                  Email inválido.
+                  </p>
+              </div>
+              <div class="form-group password-input-container">
+                  <label for="clave">Clave:</label><br />
+                  <div class="password-field-container">
+                    <input [type]="tipoInputClave()" [(ngModel)]="clave" name="clave" minlength="6" required autocomplete="new-password" class="form-control" id="clave" placeholder="Ingrese su contraseña" />
+                    <button 
+                      type="button" 
+                      (click)="mostrarClave = !mostrarClave" 
+                      class="show-password-btn"
+                    >
+                      <img 
+                        [src]="'assets/icons/' + (mostrarClave ? 'eye-slash.svg' : 'eye.svg')"
+                        alt="Icono de visibilidad de contraseña"
+                        width="20"
+                        height="20"
+                      />
+                    </button>
+                  </div>
+                  <p *ngIf="clave && !contrasenaSegura()" style="color:red;">
+                  La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula y un número.
+                  </p>
+              </div>
+              <div class="form-group password-input-container">
+                  <label for="repetirClave">Repetir Clave:</label><br />
+                  <div class="password-field-container">
+                    <input [type]="tipoInputRepetir()" [(ngModel)]="repetirClave" name="repetirClave" minlength="6" required autocomplete="new-password" class="form-control" id="repetirClave" placeholder="Repita su contraseña" />
+                    <button 
+                      type="button" 
+                      (click)="mostrarRepetirClave = !mostrarRepetirClave" 
+                      class="show-password-btn"
+                    >
+                      <img 
+                        [src]="'assets/icons/' + (mostrarRepetirClave ? 'eye-slash.svg' : 'eye.svg')" 
+                        alt="Icono de visibilidad de contraseña"
+                        width="20"
+                        height="20"
+                      />
+                    </button>
+                  </div>
+                  <p *ngIf="clave && repetirClave && !contrasenasCoinciden()" style="color:red;">
+                    Las contraseñas no coinciden.
+                  </p>
+              </div>
+              <div class="form-buttons">
+                  <button
+                    type="submit"
+                    class="btn btn-main"
+                    [disabled]="
+                      !contrasenasCoinciden() ||
+                      !emailValido() ||
+                      !nombreValido() ||
+                      !contrasenaSegura()
+                    ">
+                    Registrarse
+                  </button>
+                  <a routerLink="/login" class="login-link">¿Ya tenés cuenta? Iniciar sesión</a>
+              </div>
+          </form>
+          <p *ngIf="mensaje" style="color: green; text-align: center; margin-top: 10px;">{{ mensaje }}</p>
+          <p *ngIf="error" style="color: red; text-align: center; margin-top: 10px;">{{ error }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

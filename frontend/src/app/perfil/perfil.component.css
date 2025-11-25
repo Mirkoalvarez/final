@@ -1,0 +1,208 @@
+/* Fuentes */
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:wght@400;700&display=swap");
+
+/* Estilos para la sección principal del perfil */
+.perfil-section {
+    background-color: #353b43; /* Fondo similar al de los formularios de login/registro */
+    padding: 50px 0;
+    min-height: calc(100vh - 60px); /* Ajusta la altura para que ocupe la mayor parte de la ventana */
+}
+
+.container {
+    max-width: 700px; /* Ancho ligeramente menor para el formulario de perfil */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.block {
+    background-color: #242930; /* Fondo de bloque similar al de los formularios */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0; /* Color de texto claro */
+    font-family: "Bitter", serif;
+}
+
+/* Título principal */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.title h2 .color {
+    color: #57cbcc; /* Color de acento para la palabra clave */
+}
+
+.title .border {
+    width: 50px;
+    height: 3px;
+    background-color: #57cbcc;
+    margin: 0 auto 30px;
+}
+
+/* Mensajes de éxito y error */
+.message {
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-family: "Bitter", serif;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.message.error {
+    background-color: #f44336; /* Rojo */
+    color: white;
+}
+
+/* Formulario de Perfil */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Bitter", serif;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #57cbcc;
+    border-radius: 5px;
+    background-color: #353b43; /* Fondo de inputs */
+    color: #fff;
+    font-family: "Bitter", serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #2c9091;
+    box-shadow: 0 0 0 3px rgba(87, 203, 204, 0.3);
+}
+
+.form-input[disabled] {
+    background-color: #2f383d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.form-text {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Bitter", serif;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    background-color: #57cbcc; /* Color de acento */
+    color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #2c9091;
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    background-color: #4a5568;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Estilos para el campo de contraseña con botón de visibilidad */
+.password-input-container {
+    position: relative;
+}
+
+.password-field-container {
+    position: relative;
+}
+
+.show-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.show-password-btn img {
+    width: 20px;
+    height: 20px;
+    filter: invert(70%) sepia(20%) saturate(500%) hue-rotate(150deg); /* Color similar al texto */
+    transition: filter 0.3s ease;
+}
+
+.show-password-btn:hover img {
+    filter: invert(50%) sepia(40%) saturate(500%) hue-rotate(150deg); /* Efecto hover */
+}
+
+.form-input[type="password"] {
+    padding-right: 40px; /* Espacio para el botón de visibilidad */
+}
+
+.validation-error {
+    color: #f44336; /* Rojo para errores de validación */
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title h2 {
+        font-size: 2rem;
+    }
+
+    .block {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title h2 {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,183 @@
+/* Fuentes */
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:wght@400;700&display=swap");
+
+/* Estilos para la sección principal del formulario */
+.formulario-publicacion-section {
+    background-color: #353b43; /* Fondo similar al de los formularios de login/registro */
+    padding: 50px 0;
+    min-height: calc(100vh - 60px); /* Ajusta la altura para que ocupe la mayor parte de la ventana */
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.block {
+    background-color: #242930; /* Fondo de bloque similar al de los formularios */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0; /* Color de texto claro */
+    font-family: "Bitter", serif;
+}
+
+/* Título principal */
+.formulario-publicacion-section h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+}
+
+.formulario-publicacion-section h2 .color {
+    color: #57cbcc; /* Color para la palabra "Publicación" */
+}
+
+.formulario-publicacion-section .border {
+    width: 50px;
+    height: 3px;
+    background-color: #57cbcc;
+    margin: 0 auto 30px;
+}
+
+/* Botón de volver */
+.btn-volver {
+    background-color: #4a76a8; /* Un azul más oscuro para volver */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Bitter", serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.btn-volver:hover {
+    background-color: #3a5f8a;
+}
+
+/* Estilo para los grupos de campos del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Etiquetas de los campos */
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #fff;
+  font-family: "Bitter", serif;
+}
+
+/* Campos de entrada */
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #57cbcc; /* Borde con color de acento */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #2f383d; /* Fondo de input */
+  color: #fff;
+  font-family: "Bitter", serif;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(87, 203, 204, 0.3);
+}
+
+/* Textarea específico */
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Información de archivo actual y checkbox */
+.current-file-info {
+  font-size: 0.9em;
+  color: #a0aec0;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.current-file-info input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.current-file-info label {
+  font-weight: normal;
+  color: #a0aec0;
+  margin-bottom: 0;
+  display: inline;
+}
+
+/* Contenedor de botones */
+.form-actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Botón principal */
+.btn-primary {
+  background-color: #57cbcc;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Bitter", serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2c9091;
+}
+
+/* Validación de errores */
+.form-error {
+  color: #e53e3e;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-family: "Bitter", serif;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .block {
+    padding: 20px;
+  }
+
+  .formulario-publicacion-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn-volver,
+  .btn-primary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,72 @@
+<section class="perfil-section">
+    <div class="container">
+    <div class="block">
+        <!-- section title -->
+        <div class="title text-center">
+        <h2>Mi <span class="color">Perfil</span></h2>
+        <div class="border"></div>
+        </div>
+        <!-- /section title -->
+
+        <p *ngIf="mensaje" class="message success">{{ mensaje }}</p>
+        <p *ngIf="error" class="message error">{{ error }}</p>
+
+        <form (ngSubmit)="guardarCambios()">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="usuario.email" name="email" required class="form-input">
+            <p *ngIf="usuario.email && !emailValido()" class="validation-error">
+            Email inválido.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="rol">Rol:</label>
+            <input type="text" id="rol" [(ngModel)]="usuario.rol" name="rol" class="form-input" disabled>
+            <small class="form-text">Tu rol actual es {{ usuario.rol }}. No puede ser modificado desde aquí.</small>
+        </div>
+
+        <div class="form-group password-input-container">
+            <label for="nuevaClave">Nueva Clave (opcional):</label>
+            <div class="password-field-container">
+            <input [type]="tipoInputClave()" id="nuevaClave" [(ngModel)]="nuevaClave" name="nuevaClave" class="form-input">
+            <button type="button" (click)="mostrarClave = !mostrarClave" class="show-password-btn">
+                <img [src]="'assets/icons/' + (mostrarClave ? 'eye-slash.svg' : 'eye.svg')" alt="Toggle password visibility" width="20" height="20"/>
+            </button>
+            </div>
+            <p *ngIf="nuevaClave && !contrasenaSegura()" class="validation-error">
+            La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula y un número.
+            </p>
+        </div>
+
+        <div class="form-group password-input-container">
+            <label for="repetirClave">Repetir Nueva Clave:</label>
+            <div class="password-field-container">
+            <input [type]="tipoInputRepetirClave()" id="repetirClave" [(ngModel)]="repetirClave" name="repetirClave" class="form-input">
+            <button type="button" (click)="mostrarRepetirClave = !mostrarRepetirClave" class="show-password-btn">
+                <img [src]="'assets/icons/' + (mostrarRepetirClave ? 'eye-slash.svg' : 'eye.svg')" alt="Toggle password visibility" width="20" height="20"/>
+            </button>
+            </div>
+            <p *ngIf="nuevaClave && repetirClave && !contrasenasCoinciden()" class="validation-error">
+            Las contraseñas no coinciden.
+            </p>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary"
+            [disabled]="
+                !usuario.nombre || !usuario.email || !emailValido() ||
+                (nuevaClave && (!contrasenaSegura() || !contrasenasCoinciden()))
+            ">
+            Guardar Cambios
+            </button>
+        </div>
+        </form>
+    </div>
+    </div>
+</section>

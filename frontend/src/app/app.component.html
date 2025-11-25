@@ -1,0 +1,20 @@
+<nav>
+  <a routerLink="/home" *ngIf="auth.estaAutenticado()">Inicio</a>
+  <a routerLink="/admin/usuarios" *ngIf="esAdmin()">Zona Admin</a>
+  <a routerLink="/login" *ngIf="!auth.estaAutenticado()">Login</a>
+  <a routerLink="/registro" *ngIf="!auth.estaAutenticado()">Registro</a>
+  <a routerLink="/publicaciones" *ngIf="auth.estaAutenticado()">Publicaciones</a>
+  <a routerLink="/perfil" *ngIf="auth.estaAutenticado()">Mi Perfil</a>
+
+  <span class="app-title">Oblivion</span>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer class="app-footer">
+  <div class="footer-content">
+    <p class="footer-brand">Oblivion</p>
+    <p class="footer-copy">Copyright &copy; 2025. Todos los derechos reservados.</p>
+    <p class="footer-developer">Diseñado & Desarrollado por Mirko Alvarez.</p>
+  </div>
+</footer>

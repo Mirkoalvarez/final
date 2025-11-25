@@ -1,0 +1,75 @@
+<section class="detalle-publicacion-section">
+  <div class="container">
+    <div class="block">
+      <!-- section title -->
+      <div class="title text-center">
+        <h2>Detalle de <span class="color">Publicación</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+
+      <button routerLink="/publicaciones" class="btn-volver">← Volver al Listado</button>
+
+      <div *ngIf="publicacion.id" class="publicacion-card">
+        <h3>{{ publicacion.titulo }}</h3>
+        <p><strong>Descripción:</strong> {{ publicacion.descripcion }}</p>
+
+        <div *ngIf="puedeEditarEliminarPublicacion()" class="acciones">
+          <button [routerLink]="['/publicaciones/editar', publicacion.id]" class="btn-primary">Editar</button>
+          <button (click)="eliminarPublicacion()" class="btn-secondary">Eliminar</button>
+        </div>
+
+        <div *ngIf="publicacion.imagen" class="image-container">
+          <img [src]="'http://localhost/final/public/uploads/' + publicacion.imagen" 
+              alt="Imagen de la publicación" width="400">
+        </div>
+
+        <div *ngIf="publicacion.archivo">
+          <a [href]="'http://localhost/final/public/uploads/' + publicacion.archivo" download class="download-link">Descargar archivo</a>
+        </div>
+      </div>
+
+      <div *ngIf="!publicacion.id && idPublicacion" class="loading">
+        Cargando publicación...
+      </div>
+    </div>
+
+    <div class="comentarios-card">
+      <h3>Comentarios ({{ comentarios.length }})</h3>
+      
+      <div *ngFor="let comentario of comentarios" class="comentario">
+        <div class="comentario-header">
+          <strong>{{ comentario.autor }}</strong>
+          <span>{{ comentario.fecha_creacion | date:'medium' }}</span>
+        </div>
+
+        <!-- Mostrar texto -->
+        <p *ngIf="comentario.id !== comentarioAEditar">{{ comentario.texto }}</p>
+
+        <!-- Edición -->
+        <div *ngIf="comentario.id === comentarioAEditar" class="comentario-edicion">
+          <textarea [(ngModel)]="comentarioEditado" placeholder="Edita tu comentario..."></textarea>
+          <div class="form-error" *ngIf="errorComentarioEditado">{{ errorComentarioEditado }}</div>
+          <button (click)="guardarComentarioEditado()" class="btn-primary">Guardar</button>
+          <button (click)="comentarioAEditar = null" class="btn-secondary">Cancelar</button>
+        </div>
+
+        <!-- Acciones -->
+        <div *ngIf="puedeEditarEliminarComentario(comentario.id_usuario) && comentario.id !== comentarioAEditar" class="comentario-acciones">
+          <button (click)="editarComentario(comentario.id, comentario.texto)" class="btn-primary">Editar</button>
+          <button (click)="eliminarComentario(comentario.id)" class="btn-secondary">Eliminar</button>
+        </div>
+      </div>
+
+      <div *ngIf="usuarioActual" class="nuevo-comentario">
+        <textarea [(ngModel)]="nuevoComentario" placeholder="Escribe tu comentario..."></textarea>
+        <div class="form-error" *ngIf="errorComentario">{{ errorComentario }}</div>
+        <button (click)="publicarComentario()" class="btn-primary">Publicar</button>
+      </div>
+
+      <div *ngIf="!usuarioActual" class="login-prompt">
+        <p>Debes <a routerLink="/login">iniciar sesión</a> para comentar.</p>
+      </div>
+    </div>
+  </div>
+</section>
