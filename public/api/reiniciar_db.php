@@ -1,12 +1,7 @@
 <?php
 //reiniciar_db.php
-require_once __DIR__ . '/../config/encabezados.php';
-require_once __DIR__ . '/../config/configuracion.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405); // Método no permitido
@@ -55,3 +50,4 @@ if ($insertar->execute()) {
     http_response_code(500); // Error al insertar el admin
     echo json_encode(['error' => 'No se pudo insertar el usuario administrador']);
 }
+

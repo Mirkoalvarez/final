@@ -1,18 +1,10 @@
 <?php
 // actualizar_comentario.php
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
-require_once '../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Manejo de solicitud OPTIONS (CORS preflight)
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Establecer cabeceras CORS específicas para el preflight
-    header("Access-Control-Allow-Origin: http://localhost:4200");
-    header("Access-Control-Allow-Headers: Authorization, Content-Type");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS"); // Asegúrate de incluir PATCH
-    http_response_code(200);
-    exit;
-}
 
 // Verificar que la solicitud sea de tipo PATCH
 if ($_SERVER['REQUEST_METHOD'] !== 'PATCH') {
@@ -75,3 +67,5 @@ if ($update->execute()) {
     echo json_encode(['error' => 'No se pudo actualizar el comentario']);
 }
 ?>
+
+

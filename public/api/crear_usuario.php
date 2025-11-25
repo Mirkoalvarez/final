@@ -1,13 +1,9 @@
 <?php
 //crear_usuario.php
-require_once __DIR__ . '/../config/encabezados.php';
-require_once __DIR__ . '/../config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
 
 // Manejo de preflight OPTIONS
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
 
 // Obtener datos del cuerpo de la solicitud
 $entrada = json_decode(file_get_contents('php://input'), true);
@@ -54,3 +50,4 @@ if ($stmt->execute()) {
     http_response_code(500);
     echo json_encode(['error' => 'Error al crear el usuario']);
 }
+

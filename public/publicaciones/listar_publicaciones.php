@@ -2,18 +2,11 @@
 // publicaciones/listar_publicaciones.php
 
 // Incluir archivos de configuración necesarios
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
 
 // Manejo de solicitud OPTIONS (CORS preflight)
 // Responde a las solicitudes OPTIONS para permitir peticiones desde otros dominios.
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Origin: http://localhost:4200"); // Permitir acceso desde el origen especificado
-    header("Access-Control-Allow-Headers: Authorization, Content-Type"); // Permitir encabezados específicos
-    header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS"); // Permitir métodos HTTP específicos
-    http_response_code(200); // Responde con un código 200 OK
-    exit; // Termina la ejecución del script
-}
 
 // Verificar que se use el método GET
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -96,3 +89,5 @@ while ($fila = $resultado->fetchArray(SQLITE3_ASSOC)) {
 // Devolver el resultado en formato JSON
 echo json_encode($publicaciones); // Envía las publicaciones como respuesta
 ?>
+
+

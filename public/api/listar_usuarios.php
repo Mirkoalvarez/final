@@ -1,14 +1,10 @@
 <?php
 //listar_usuario.php
-require_once __DIR__ . '/../config/encabezados.php';
-require_once __DIR__ . '/../config/configuracion.php';
-require_once __DIR__ . '/../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Manejo de solicitud OPTIONS (CORS preflight)
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
 
 // Verificar método GET
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -47,3 +43,4 @@ while ($fila = $resultado->fetchArray(SQLITE3_ASSOC)) {
 
 // Devolver respuesta
 echo json_encode(['usuarios' => $usuarios]);
+

@@ -1,8 +1,8 @@
 <?php
 //publicaciones/publicacion.php
 // Incluir archivos de configuración necesarios
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
 
 // Obtener el ID de la publicación desde los parámetros de la URL
 $id = $_GET['id'] ?? null; // Si no se proporciona, se establece como null
@@ -38,3 +38,5 @@ if ($res) {
     echo json_encode(['error' => 'Publicación no encontrada']); // Mensaje de error en formato JSON
 }
 ?>
+
+

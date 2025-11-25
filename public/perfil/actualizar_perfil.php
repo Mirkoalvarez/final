@@ -1,18 +1,11 @@
 <?php
 // api/perfil/actualizar_perfil.php
 // Incluir archivos de configuración necesarios
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
-require_once '../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 // Manejo de solicitud OPTIONS (CORS preflight)
 // Responde a las solicitudes OPTIONS para permitir peticiones desde otros dominios.
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Origin: http://localhost:4200"); // Permitir acceso desde el origen especificado
-    header("Access-Control-Allow-Headers: Authorization, Content-Type"); // Permitir encabezados específicos
-    header("Access-Control-Allow-Methods: PATCH, OPTIONS"); // Permitir métodos HTTP específicos
-    http_response_code(200); // Responde con un código 200 OK
-    exit; // Termina la ejecución del script
-}
 
 // Verificar método PATCH
 if ($_SERVER['REQUEST_METHOD'] !== 'PATCH') {
@@ -116,3 +109,5 @@ if ($consulta->execute()) {
     echo json_encode(['error' => 'No se pudo actualizar el perfil']);
 }
 ?>
+
+

@@ -1,18 +1,10 @@
 <?php
 // actualizar_usuario.php
-require_once __DIR__ . '/../config/encabezados.php';
-require_once __DIR__ . '/../config/configuracion.php';
-require_once __DIR__ . '/../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Manejo de solicitud OPTIONS (CORS preflight)
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Establecer cabeceras CORS
-    header("Access-Control-Allow-Origin: http://localhost:4200");
-    header("Access-Control-Allow-Headers: Authorization, Content-Type");
-    header("Access-Control-Allow-Methods: PATCH, OPTIONS");
-    http_response_code(200);
-    exit;
-}
 
 // Verificar método PATCH
 if ($_SERVER['REQUEST_METHOD'] !== 'PATCH') {
@@ -110,3 +102,4 @@ if ($consulta->execute()) {
     http_response_code(500);
     echo json_encode(['error' => 'No se pudo actualizar el usuario']);
 }
+

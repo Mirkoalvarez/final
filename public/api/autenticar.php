@@ -1,18 +1,14 @@
 <?php
 //autenticar.php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-require_once __DIR__ . '/../config/encabezados.php';
-require_once __DIR__ . '/../config/configuracion.php';
-require_once __DIR__ . '/../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Manejo de solicitud OPTIONS (CORS preflight)
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
 
 // Verificar método POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -59,3 +55,4 @@ echo json_encode([
     'mensaje' => 'Autenticación exitosa',
     'token' => $jwt
 ]);
+

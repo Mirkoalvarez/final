@@ -6,16 +6,12 @@ header("Access-Control-Allow-Headers: Authorization, Content-Type"); // Permitir
 header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS"); // Permitir métodos HTTP específicos
 
 // Incluir archivos de configuración y utilidades necesarias
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
-require_once '../middleware/auth_middleware.php';
-require_once '../utilidades/utils.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
+require_once __DIR__ . '/../utilidades/utils.php';
 
 // Manejo de solicitudes OPTIONS
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200); // Responde con un código 200 OK
-    exit; // Termina la ejecución del script
-}
 
 // Autenticar el token y obtener el payload del usuario
 // El middleware autenticarToken() ya se encarga de validar el token
@@ -74,3 +70,5 @@ if ($stmt->execute()) {
     echo json_encode(['error' => 'Error al crear la publicación']); // Mensaje de error en formato JSON
 }
 ?>
+
+

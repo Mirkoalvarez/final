@@ -2,20 +2,12 @@
 // comentarios/eliminar_comentarios.php
 
 // Incluye los archivos de configuración y middleware necesarios
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
-require_once '../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Manejo de solicitudes OPTIONS (CORS preflight)
 // Responde a las solicitudes OPTIONS para permitir peticiones desde otros dominios.
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Establece las cabeceras CORS permitiendo el origen, los encabezados y los métodos.
-    header("Access-Control-Allow-Origin: http://localhost:4200");
-    header("Access-Control-Allow-Headers: Authorization, Content-Type");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS"); // Asegúrate de incluir PATCH
-    http_response_code(200); // Responde con un código 200 OK
-    exit; // Termina la ejecución del script
-}
 
 // Validar método HTTP
 // Solo se permite el método DELETE para esta operación.
@@ -94,3 +86,5 @@ try {
     ]);
 }
 ?>
+
+

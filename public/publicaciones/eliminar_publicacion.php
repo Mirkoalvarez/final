@@ -7,15 +7,11 @@ header("Access-Control-Allow-Headers: Authorization, Content-Type"); // Permitir
 header("Access-Control-Allow-Methods: DELETE, OPTIONS"); // Permitir métodos HTTP específicos
 
 // Manejo de solicitudes OPTIONS
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200); // Responde con un código 200 OK
-    exit; // Termina la ejecución del script
-}
 
 // Incluir archivos de configuración y middleware necesarios
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
-require_once '../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Validar que el método HTTP sea DELETE
 if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
@@ -101,3 +97,5 @@ if ($stmt->execute()) {
     echo json_encode(["error" => "Error al eliminar la publicación de la base de datos"]); // Mensaje de error en formato JSON
 }
 ?>
+
+

@@ -2,20 +2,12 @@
 // publicaciones/subir_imagen.php
 
 // Incluir archivos de configuración y middleware necesarios
-require_once '../config/encabezados.php';
-require_once '../config/configuracion.php';
-require_once '../middleware/auth_middleware.php';
+require_once dirname(__DIR__, 2) . '/config/encabezados.php';
+require_once dirname(__DIR__, 2) . '/config/configuracion.php';
+require_once dirname(__DIR__, 2) . '/middleware/auth_middleware.php';
 
 // Manejo de solicitud OPTIONS (CORS preflight)
 // Responde a las solicitudes OPTIONS para permitir peticiones desde otros dominios.
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Establecer cabeceras CORS específicas para el preflight
-    header("Access-Control-Allow-Origin: http://localhost:4200"); // Permitir acceso desde el origen especificado
-    header("Access-Control-Allow-Headers: Authorization, Content-Type"); // Permitir encabezados específicos
-    header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS"); // Permitir métodos HTTP específicos
-    http_response_code(200); // Responde con un código 200 OK
-    exit; // Termina la ejecución del script
-}
 
 // Verificar que el método sea POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -33,7 +25,7 @@ $uploadDir = __DIR__ . '/../uploads/'; // Directorio para subir archivos
 
 // Crear el directorio si no existe
 if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true); // Crea el directorio con permisos 0777
+    mkdir($uploadDir, 0755, true); // Permisos más restrictivos
 }
 
 // Inicializar la respuesta
@@ -76,3 +68,5 @@ foreach ($archivos as $campo) {
 // Devolver la respuesta en formato JSON
 echo json_encode($response); // Envía la respuesta como JSON
 ?>
+
+
