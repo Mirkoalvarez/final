@@ -3,7 +3,7 @@
     <div class="block">
       <!-- section title -->
       <div class="title text-center">
-        <h2>Detalle de <span class="color">Publicación</span></h2>
+        <h2>Detalle de <span class="color">Publicaci��n</span></h2>
         <div class="border"></div>
       </div>
       <!-- /section title -->
@@ -12,6 +12,7 @@
 
       <div *ngIf="publicacion.id" class="publicacion-card">
         <h3>{{ publicacion.titulo }}</h3>
+        <p class="meta"><strong>Autor:</strong> {{ publicacion.autor || 'Desconocido' }}</p>
         <p><strong>Descripción:</strong> {{ publicacion.descripcion }}</p>
 
         <div *ngIf="puedeEditarEliminarPublicacion()" class="acciones">
@@ -68,7 +69,7 @@
       </div>
 
       <div *ngIf="!usuarioActual" class="login-prompt">
-        <p>Debes <a routerLink="/login">iniciar sesión</a> para comentar.</p>
+        <p>Debes <a routerLink="/login">iniciar sesi��n</a> para comentar.</p>
       </div>
     </div>
   </div>

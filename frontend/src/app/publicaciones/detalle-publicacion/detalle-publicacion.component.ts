@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule para maneja
   selector: 'app-detalle-publicacion', // Selector CSS para usar este componente en plantillas HTML
   standalone: true, // Indica que este es un componente autónomo, no requiere un NgModule
   imports: [CommonModule, RouterModule, FormsModule], // Módulos que este componente necesita para funcionar
-  templateUrl: './detalle-publicacion.component.html', // Ruta al archivo HTML de la plantilla del componente
-  styleUrls: ['./detalle-publicacion.component.css'] // Ruta al archivo CSS de estilos específicos del componente
+  templateUrl: 'detalle-publicacion.component.html', // Ruta al archivo HTML de la plantilla del componente
+  styleUrls: ['detalle-publicacion.component.css'] // Ruta al archivo CSS de estilos específicos del componente
 })
 export class DetallePublicacionComponent {
   publicacion: any = {}; // Objeto para almacenar los detalles de la publicación
