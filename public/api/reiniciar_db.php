@@ -34,8 +34,8 @@ try {
 //---------------------------------------
 
 // Insertar el usuario administrador
-$adminEmail = 'admin@example.com';
-$adminClave = password_hash('admin123', PASSWORD_DEFAULT);
+$adminEmail = 'admin@admin.com';
+$adminClave = password_hash('Admin123', PASSWORD_DEFAULT);
 $rol = 'admin';
 
 $insertar = $db->prepare('INSERT INTO usuarios (nombre, email, clave, rol) VALUES (:nombre, :email, :clave, :rol)');
