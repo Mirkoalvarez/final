@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core'; // Importa Injectable para poder inyectar este servicio
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // Importa HttpClient para realizar solicitudes HTTP y HttpHeaders para configurar encabezados
-import { inject } from '@angular/core'; // Importa la función inject para inyectar dependencias
-import { Router } from '@angular/router'; // Importa Router para la navegación programática
+import { inject } from '@angular/core'; // Importa la funciИn inject para inyectar dependencias
+import { Router } from '@angular/router'; // Importa Router para la navegaciИn programケtica
 
 @Injectable({
-  providedIn: 'root', // Indica que este servicio está disponible en toda la aplicación
+  providedIn: 'root', // Indica que este servicio estケ disponible en toda la aplicaciИn
 })
 export class AuthService {
   private apiUrl = 'http://localhost/final/public/api'; // URL base de la API
   private http = inject(HttpClient); // Inyecta HttpClient para realizar solicitudes HTTP
-  private router = inject(Router); // Inyecta Router para permitir la navegación
+  private router = inject(Router); // Inyecta Router para permitir la navegaciИn
 
   /**
-   * Registra un nuevo usuario en la aplicación.
+   * Registra un nuevo usuario en la aplicaciИn.
    * @param nombre - Nombre del usuario
    * @param email - Email del usuario
-   * @param clave - Contraseña del usuario
+   * @param clave - Contraseヵa del usuario
    * @returns Observable con la respuesta del servidor
    */
   registro(nombre: string, email: string, clave: string) {
@@ -29,10 +29,10 @@ export class AuthService {
   }
 
   /**
-   * Inicia sesión de un usuario en la aplicación.
+   * Inicia sesiИn de un usuario en la aplicaciИn.
    * @param email - Email del usuario
-   * @param clave - Contraseña del usuario
-   * @returns Observable con el token de autenticación
+   * @param clave - Contraseヵa del usuario
+   * @returns Observable con el token de autenticaciИn
    */
   login(email: string, clave: string) {
     const headers = new HttpHeaders({
@@ -45,15 +45,15 @@ export class AuthService {
   }
 
   /**
-   * Guarda el token de autenticación en localStorage.
-   * @param token - Token de autenticación a guardar
+   * Guarda el token de autenticaciИn en localStorage.
+   * @param token - Token de autenticaciИn a guardar
    */
   guardarToken(token: string) {
     localStorage.setItem('token', token); // Almacena el token en localStorage
   }
 
   /**
-   * Obtiene el token de autenticación desde localStorage.
+   * Obtiene el token de autenticaciИn desde localStorage.
    * @returns El token si existe, o null si no
    */
   obtenerToken(): string | null {
@@ -61,16 +61,16 @@ export class AuthService {
   }
 
   /**
-   * Cierra la sesión del usuario, eliminando el token y redirigiendo al login.
+   * Cierra la sesiИn del usuario, eliminando el token y redirigiendo al login.
    */
   cerrarSesion() {
     localStorage.removeItem('token'); // Elimina el token de localStorage
-    this.router.navigate(['/login']); // Redirige al usuario a la página de login
+    this.router.navigate(['/login']); // Redirige al usuario a la pケgina de login
   }
 
   /**
-   * Verifica si el usuario está autenticado.
-   * @returns true si el usuario está autenticado, false en caso contrario
+   * Verifica si el usuario estケ autenticado.
+   * @returns true si el usuario estケ autenticado, false en caso contrario
    */
   estaAutenticado(): boolean {
     return !!this.obtenerToken(); // Devuelve true si hay un token almacenado
@@ -94,7 +94,7 @@ export class AuthService {
   }
 
   /**
-   * Obtiene la información del usuario desde el token.
+   * Obtiene la informaciИn del usuario desde el token.
    * @returns El payload del usuario si existe, o null si no
    */
   obtenerUsuario(): any | null {
@@ -113,7 +113,7 @@ export class AuthService {
 
 /**
  * Notas adicionales:
- * 1. Este servicio maneja la autenticación de usuarios, incluyendo registro, inicio de sesión y gestión de tokens.
- * 2. Asegúrate de que la API esté configurada para manejar las solicitudes de registro y autenticación correctamente.
- * 3. Este servicio se puede inyectar en otros componentes o servicios donde se necesite gestionar la autenticación.
+ * 1. Este servicio maneja la autenticaciИn de usuarios, incluyendo registro, inicio de sesiИn y gestiИn de tokens.
+ * 2. Asegカrate de que la API estゼ configurada para manejar las solicitudes de registro y autenticaciИn correctamente.
+ * 3. Este servicio se puede inyectar en otros componentes o servicios donde se necesite gestionar la autenticaciИn.
  */

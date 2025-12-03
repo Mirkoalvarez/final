@@ -2,10 +2,6 @@
 @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700");
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:wght@400;700&display=swap");
 
-html {
-    scroll-behavior: smooth;
-}
-
 /* Estilos para la sección registro-hero-area (similar al login) */
 .registro-hero-area {
     background-size: cover;
@@ -291,4 +287,3 @@ input[type="text"]:focus {
         margin-left: 0;
     }
 }
-

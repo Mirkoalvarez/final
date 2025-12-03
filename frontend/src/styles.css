@@ -6,9 +6,6 @@ html, body {
     padding: 0;
     overflow-x: hidden; /* Previene barras de desplazamiento horizontales */
 }
-html {
-    scroll-behavior: smooth;
-}
 * {
     box-sizing: border-box;
 }
